@@ -117,13 +117,9 @@ class InstagramPySession:
                 }
             )
 
-            '''
-                Note: https://icanhazip.com is a free domain to get your current tor ip
-                      this is not a dangerous website for sure , thank you @majorhayden
-            '''
             try:
-                self.ip = self.bot.get(
-                    'https://icanhazip.com').content.rstrip().decode()
+                self.ip = (self.bot.get(
+                    'http://httpbin.org/ip').json())['origin']
             except KeyboardInterrupt:
                 self.cli.ReportError("process aborted by the user")
             except (BaseException, Exception) as err:
@@ -290,8 +286,8 @@ class InstagramPySession:
         if not self.tor_controller == None:
             # signal tor to change ip
             self.tor_controller.signal(Signal.NEWNYM)
-            self.ip = self.bot.get(
-                'https://icanhazip.com').content.rstrip().decode()
+            self.ip =  (self.bot.get(
+                    'http://httpbin.org/ip').json())['origin']
             return True
         return False
 
