@@ -124,7 +124,7 @@ class InstagramPySession:
                 self.cli.ReportError("process aborted by the user")
             except (BaseException, Exception) as err:
                 self.cli.ReportError(
-                    "Connection to host failed , check your connection and tor configuration.")
+                    "Connection to host failed , check your connection and tor configuration :: {}".format(err))
 
         if not os.path.exists(save_location):
             try:
