@@ -37,7 +37,7 @@
 | brute forcing instagram without any password (try) limiting. Another reason to start working on this project was
 | that there was no good tool to do this job , Yep! even now if you search through github you cannot find a tool
 | which is good as instagram-py. Since a few people liked this tool , I decided to give it a **LTS**.
-} Still there exists some old versions of instagram-py all-over github but **this is the official repo**.
+| Still there exists some old versions of instagram-py all-over github but **this is the official repo**.
 | You can also use **different versions** of **instagram-py** through **pip**. 
 
 
