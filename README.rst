@@ -32,15 +32,13 @@
 
   
   
-| This project was started as a **POC** and then evolved into something. My previous username was **deathsec** on github
-| and I created this script back then , Right after I deleted my username from **github** , a another
-| guy just took that and hosted a cloned version of instagram-py in a new repo. Because I kept the pypi package pointing
-| to this fake **deathsec** , A lot users believed that , the new **deathsec** was the original author which is not.
-| Since a lot of users or a few liked instagram-py , I decided to revive it and give it a long time support ( **LTS** ).
-| Now I'm building Instagram-Py as a professional tool for penetration testers.
-|
-| If you want to see if I am the real deal then you may do so by upgrading your instagram-py version through pip.
-| You can also look into the **git log** for initial commit on thoose cloned or fake repos. ( it will have my personel email ).
+| This project was started as a **POC** and then evolved into something. I first started this project when a lot
+| of people started asking about brute forcing instagram and so I started working on a **Proof-Of-Concept** for
+| brute forcing instagram without any password (try) limiting. Another reason to start working on this project was
+| that there was no good tool to do this job , Yep! even now if you search through github you cannot find a tool
+| which is good as instagram-py. Since a few people liked this tool , I decided to give it a **LTS**.
+} Still there exists some old versions of instagram-py all-over github but **this is the official repo**.
+| You can also use **different versions** of **instagram-py** through **pip**. 
 
 
 ------
