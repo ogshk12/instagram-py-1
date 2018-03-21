@@ -32,13 +32,12 @@
 
   
   
-| This project was started as a **POC** and then evolved into something. I first started this project when a lot
-| of people started asking about brute forcing instagram and so I started working on a **Proof-Of-Concept** for
-| brute forcing instagram without any password (try) limiting. Another reason to start working on this project was
-| that there was no good tool to do this job , Yep! even now if you search through github you cannot find a tool
-| which is good as instagram-py. Since a few people liked this tool , I decided to give it a **LTS**.
-| Still there exists some old versions of instagram-py all-over github but **this is the official repo**.
-| You can also use **different versions** of **instagram-py** through **pip**. 
+| This project was started as a **POC** and then evolved into something. I first started this project when a lot of people
+| started asking about brute forcing instagram and so I started working on a **Proof-Of-Concept** for brute forcing instagram
+| without any password (try) limiting. Another reason to start working on this project was that there was no good tool to do
+| this job , Yep! even now if you search through github you cannot find a tool which is good as instagram-py. Since a few people
+| liked this tool , I decided to give it a **LTS**. Still there exists some old versions of instagram-py all-over github but
+| **this is the official repo**. You can also use **different versions** of **instagram-py** through **pip**. 
 
 
 ------
