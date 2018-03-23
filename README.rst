@@ -40,7 +40,13 @@
 | **this is the official repo**. You can also use **different versions** of **instagram-py** through **pip**. 
 
 
-.. image:: .img/preview.gif
+.. raw:: html
+
+ <br>
+ <p align=center>
+ <img src=".img/preview.gif" / >
+ </p>
+
 
 
 ------
