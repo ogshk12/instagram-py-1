@@ -40,6 +40,9 @@
 | **this is the official repo**. You can also use **different versions** of **instagram-py** through **pip**. 
 
 
+.. image:: .img/preview.gif
+
+
 ------
  How?
 ------
