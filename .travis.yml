@@ -9,15 +9,14 @@ install:
   - sudo apt-get install libevent-dev
 
 script:
-  - export VERSION=$(git rev-parse --short HEAD)
+  - export VERSION=continuous
   - bash resources/build_appimage.sh
   - cd dist
 
 after_success:
-  - ls
-  - curl --upload-file Instagram*.AppImage https://transfer.sh/Instagram.AppImage
-  - # wget "https://github.com/probonopd/uploadtool/raw/master/upload.sh"
-  - # bash upload.sh Instagram*.AppImage *zsync
+  - # curl --upload-file Instagram*.AppImage https://transfer.sh/Instagram.AppImage
+  - wget "https://github.com/probonopd/uploadtool/raw/master/upload.sh"
+  - bash upload.sh Instagram-Py*.AppImage *zsync
   
 branches:
   except:
