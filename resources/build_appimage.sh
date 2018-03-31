@@ -51,7 +51,8 @@ make -j$(nproc)
 make DESTDIR=../tor_install install -j$(nproc)
 cd ..
 cp -r -p tor_install/usr/local/* instagram-py.AppDir/usr/ # Copy tor installation.
-cp /usr/lib/libevent* instagram-py.AppDir/usr/lib/ # Copy libevent from travis build system.
+cp /usr/lib/x86_64-linux-gnu/libevent-2.0.so.5 instagram-py.AppDir/usr/lib/ # Copy libevent from travis build system.
+cp /usr/lib/x86_64-linux-gnu/libevent-2.0.so.5.1.9 instagram-py.AppDir/usr/lib/
 
 # Get the AppRun.
 wget -O instagram-py.AppDir/AppRun -c -q "https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-x86_64"
