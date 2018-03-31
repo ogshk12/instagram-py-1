@@ -1,0 +1,22 @@
+language: python
+sudo: require
+dist: trusty
+
+before_install:
+  - sudo apt-get update -qq
+
+script:
+  - export VERSION=$(git rev-parse --short HEAD)
+  - sudo bash resources/build_appimage.sh
+  - cd dist
+
+after_success:
+  - ls
+  - curl --upload-file Instagram*.AppImage https://transfer.sh/Instagram.AppImage
+  - # wget "https://github.com/probonopd/uploadtool/raw/master/upload.sh"
+  - # bash upload.sh Instagram*.AppImage *zsync
+  
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
