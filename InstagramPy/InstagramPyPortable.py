@@ -13,20 +13,22 @@ import subprocess
 from contextlib import closing
 from .InstagramPyConfigurationCreator import InstagramPyConfigurationCreator
 
+
 class InstagramPyPortable():
-    torprocess = None # This is tor server process.
+    torprocess = None  # This is tor server process.
 
     def __init__(self):
         if self.__is_portable_env_set__() is False:
-            return None # Quit as this is not a portable instance.
+            return None  # Quit as this is not a portable instance.
         # ----
 
         # Make Configurations.
 
         self.torserver_port = self.__find_free_port__()
         self.torserver_control_port = self.__find_free_port__()
-        self.instagram_py_config_fp = tempfile.NamedTemporaryFile(mode='w' , delete=False)
-        self.torrc_fp = tempfile.NamedTemporaryFile(mode='w' , delete=False)
+        self.instagram_py_config_fp = tempfile.NamedTemporaryFile(
+            mode='w', delete=False)
+        self.torrc_fp = tempfile.NamedTemporaryFile(mode='w', delete=False)
 
         # The unique tor configuration file generated for each
         # instance for portable instagram-py.
@@ -42,7 +44,7 @@ class InstagramPyPortable():
 ## Tor opens a socks proxy on port 9050 by default -- even if you don't
 ## configure one below. Set "SocksPort 0" if you plan to run Tor only
 ## as a relay, and not make any local application connections yourself.
-SocksPort '''+str(self.torserver_port)+'''
+SocksPort ''' + str(self.torserver_port) + '''
 #SocksPort 192.168.0.1:9100 # Bind to this adddress:port too.
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
@@ -80,7 +82,7 @@ Log notice syslog
 
 ## The port on which Tor will listen for local connections from Tor
 ## controller applications, as documented in control-spec.txt.
-ControlPort '''+str(self.torserver_control_port)+'''
+ControlPort ''' + str(self.torserver_control_port) + '''
 DisableDebuggerAttachment 0
 ## If you enable the controlport, be sure to enable one of these
 ## authentication methods, to prevent attackers from accessing it.
@@ -219,21 +221,24 @@ DisableDebuggerAttachment 0
         # ----
 
         # Write Configuration
-        self.torrc_fp.write(self.torrc) # Tor Configuration
-        InstagramPyConfigurationCreator(path = None , fp = self.instagram_py_config_fp ,
-                                        tserver_port = str(self.torserver_port) ,
-                                        tcontrol_port = str(self.torserver_control_port) ,
-                                        tcontrol_password = "").create() # Instagram-Py Config.
+        self.torrc_fp.write(self.torrc)  # Tor Configuration
+        InstagramPyConfigurationCreator(path=None, fp=self.instagram_py_config_fp,
+                                        tserver_port=str(self.torserver_port),
+                                        tcontrol_port=str(
+                                            self.torserver_control_port),
+                                        tcontrol_password="").create()  # Instagram-Py Config.
 
-        #Make sure to close the files to make it readable.
+        # Make sure to close the files to make it readable.
         self.torrc_fp.close()
         self.instagram_py_config_fp.close()
 
         # Start the tor server.
         # Note: We must set our version of tor in the path instead of the
         # users to make this work!
-        self.torprocess = subprocess.Popen(['tor' , '-f' , self.torrc_fp.name] , stdout=subprocess.DEVNULL , stderr=subprocess.DEVNULL)
-        time.sleep(5) # Lets give tor server little time to startup and bootstrap a circuit.
+        self.torprocess = subprocess.Popen(
+            ['tor', '-f', self.torrc_fp.name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        # Lets give tor server little time to startup and bootstrap a circuit.
+        time.sleep(5)
 
     def __find_free_port__(self):
         with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
@@ -251,22 +256,22 @@ DisableDebuggerAttachment 0
         return self.__is_portable_env_set__()
 
     def getInstagramPyConfigPath(self):
-         return self.instagram_py_config_fp.name
+        return self.instagram_py_config_fp.name
 
     def isTorServerRunning(self):
-         ret = True
-         if self.__is_portable_env_set__():
+        ret = True
+        if self.__is_portable_env_set__():
             if self.torprocess.poll() == 0:
-                 ret = False
-         else:
-             ret = False
-         return ret
+                ret = False
+        else:
+            ret = False
+        return ret
 
     def terminate(self):
-         # Delete All Configuration files.
-         try:
+        # Delete All Configuration files.
+        try:
             os.unlink(self.instagram_py_config_fp.name)
             os.unlink(self.torrc_fp.name)
-         except:
-             pass
-         return self.torprocess.terminate()
+        except:
+            pass
+        return self.torprocess.terminate()

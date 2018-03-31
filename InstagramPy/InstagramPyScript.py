@@ -19,13 +19,13 @@ class InstagramPyScript():
     threads = {}  # not actually threads but a simple dict
     no_of_threads = len(threads)
 
-    def __init__(self, script , PortableService = None):
+    def __init__(self, script, PortableService=None):
         self.cli = InstagramPyCLI(appinfo=AppInformation,
                                   started=datetime.now(),
                                   verbose_level=0,
                                   username='',
                                   PortableService=PortableService
-                                 )
+                                  )
         self.cli.PrintHeader()
         self.cli.PrintDatetime()
         self.pService = PortableService
@@ -61,7 +61,7 @@ class InstagramPyScript():
                 INSTAPY_CONFIG = DEFAULT_PATH
                 if self.pService is not None:
                     if self.pService.isSetInstagramPyPortable():
-                        INSTAPY_CONFIG = self.pService.getInstagramPyConfigPath();
+                        INSTAPY_CONFIG = self.pService.getInstagramPyConfigPath()
 
                 try:
                     session = InstagramPySession(

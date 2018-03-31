@@ -17,8 +17,8 @@ class InstagramPyCLI():
     verbose = 0
     pService = None
 
-    def __init__(self, appinfo, started, verbose_level, username , PortableService = None):
-        self.pService = PortableService # This can't go wrong , right ?
+    def __init__(self, appinfo, started, verbose_level, username, PortableService=None):
+        self.pService = PortableService  # This can't go wrong , right ?
         try:
             self.verbose = int(verbose_level)
             self.started = started

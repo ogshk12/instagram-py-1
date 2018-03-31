@@ -286,8 +286,8 @@ class InstagramPySession():
         if not self.tor_controller == None:
             # signal tor to change ip
             self.tor_controller.signal(Signal.NEWNYM)
-            self.ip =  (self.bot.get(
-                    'http://httpbin.org/ip').json())['origin']
+            self.ip = (self.bot.get(
+                'http://httpbin.org/ip').json())['origin']
             return True
         return False
 

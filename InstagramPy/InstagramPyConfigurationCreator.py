@@ -28,7 +28,7 @@ class InstagramPyConfigurationCreator():
         }
     }
 
-    def __init__(self, path , fp = None , tserver_port = "9050" , tcontrol_port = "9051" , tcontrol_password = ""):
+    def __init__(self, path, fp=None, tserver_port="9050", tcontrol_port="9051", tcontrol_password=""):
         if fp is not None:
             self.config_fp = fp
         else:
@@ -36,7 +36,6 @@ class InstagramPyConfigurationCreator():
         self.default_config["tor"]["port"] = tserver_port
         self.default_config["tor"]["control"]["port"] = tcontrol_port
         self.default_config["tor"]["control"]["password"] = tcontrol_password
-
 
     '''
     create():
@@ -87,5 +86,5 @@ class InstagramPyConfigurationCreator():
                 json.dump(self.default_config, f)
 
             print("{}Written Configuration at {}{}".format(
-            Style.BRIGHT, self.config_path, Style.RESET_ALL))
+                Style.BRIGHT, self.config_path, Style.RESET_ALL))
         return True
