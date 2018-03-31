@@ -5,6 +5,9 @@ dist: trusty
 before_install:
   - sudo apt-get update -qq
 
+install:
+  - apt-get install libevent-dev
+
 script:
   - export VERSION=$(git rev-parse --short HEAD)
   - sudo bash resources/build_appimage.sh
