@@ -50,8 +50,8 @@
  <p align=center>
  <table>
  <tr>
- <th>Download</th>
- <th>Install</th>
+ <th>DOWNLOAD</th>
+ <th>INSTALL</th>
  </tr>
  <tr>
  <td>
@@ -138,10 +138,12 @@ Just **execute** this **single command** and you will have everything to start u
 * You **don't** even need **python** and **tor server** installed.
 * You **don't** need any type of **configuration**. (*It Just Works!*)
 
- ::
 
-  $ sudo wget -O /usr/bin/instagram-py https://git.io/vxKaq; sudo chmod +x /usr/bin/instagram-py
-  $ instagram-py # Installed , Easy right ?
+::
+
+ $ sudo wget -O /usr/bin/instagram-py https://git.io/vxKaq; sudo chmod +x /usr/bin/instagram-py
+ $ instagram-py # Installed , Easy right ?
+
 
 
 **Caution**: Please don't mix up this installation and pip installation as it may give unexpected
