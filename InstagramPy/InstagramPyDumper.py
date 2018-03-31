@@ -8,7 +8,7 @@ import json
 import os
 
 
-class InstagramPyDumper:
+class InstagramPyDumper():
     dump_data = "{}/.instagram-py/dump.json".format(os.path.expanduser('~'))
     required_info = None
 

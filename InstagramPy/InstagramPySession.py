@@ -15,7 +15,7 @@ from stem.control import Controller
 DEFAULT_PATH = "{}/".format(os.path.expanduser('~'))
 
 
-class InstagramPySession:
+class InstagramPySession():
     '''
         __init__:
             - loads configuration from specified file.

@@ -11,12 +11,14 @@ from InstagramPy import AppInfo
 from .colors import *
 
 
-class InstagramPyCLI:
+class InstagramPyCLI():
     username = None
     started = None
     verbose = 0
+    pService = None
 
-    def __init__(self, appinfo, started, verbose_level, username):
+    def __init__(self, appinfo, started, verbose_level, username , PortableService = None):
+        self.pService = PortableService # This can't go wrong , right ?
         try:
             self.verbose = int(verbose_level)
             self.started = started
@@ -41,6 +43,8 @@ class InstagramPyCLI:
         self.HEADER = Fore.MAGENTA + self.HEADER + Style.RESET_ALL
 
     def ReportError(self, error):
+        if self.pService is not None:
+            self.pService.terminate()
         print('{}{}fatal error::{} {}'.format(
             Style.BRIGHT, Fore.RED, Style.RESET_ALL, error))
         sys.exit(-1)

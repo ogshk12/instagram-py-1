@@ -8,8 +8,10 @@ import json
 from .colors import *
 
 
-class InstagramPyConfigurationCreator:
+class InstagramPyConfigurationCreator():
     config_path = None
+    config_fp = None
+
     default_config = {
         "api-url": "https://i.instagram.com/api/v1/",
         "user-agent": "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)",
@@ -17,17 +19,24 @@ class InstagramPyConfigurationCreator:
         "ig-sig-version": "4",
         "tor": {
             "server": "127.0.0.1",
-            "port": "9050",
+            "port": "",
             "protocol": "socks5",
             "control": {
                 "password": "",
-                "port": "9051"
+                "port": ""
             }
         }
     }
 
-    def __init__(self, path):
-        self.config_path = path
+    def __init__(self, path , fp = None , tserver_port = "9050" , tcontrol_port = "9051" , tcontrol_password = ""):
+        if fp is not None:
+            self.config_fp = fp
+        else:
+            self.config_path = path
+        self.default_config["tor"]["port"] = tserver_port
+        self.default_config["tor"]["control"]["port"] = tcontrol_port
+        self.default_config["tor"]["control"]["password"] = tcontrol_password
+
 
     '''
     create():
@@ -35,10 +44,13 @@ class InstagramPyConfigurationCreator:
     '''
 
     def create(self):
-        with open(self.config_path, 'w') as f:
-            json.dump(self.default_config, f)
-        print("{}Written Configuration at {}{}".format(
-            Style.BRIGHT, self.config_path, Style.RESET_ALL))
+        if self.config_fp is not None:
+            json.dump(self.default_config, self.config_fp)
+        else:
+            with open(self.config_path, 'w') as f:
+                json.dump(self.default_config, f)
+            print("{}Written Configuration at {}{}".format(
+                Style.BRIGHT, self.config_path, Style.RESET_ALL))
         return True
 
     def easy_create(self):
@@ -68,9 +80,12 @@ class InstagramPyConfigurationCreator:
         if tor_control_password is not '':
             self.default_config['tor']['control']['password'] = tor_control_password
 
-        with open(self.config_path, 'w') as f:
-            json.dump(self.default_config, f)
+        if self.config_fp is not None:
+            json.dump(self.default_config, self.config_fp)
+        else:
+            with open(self.config_path, 'w') as f:
+                json.dump(self.default_config, f)
 
-        print("{}Written Configuration at {}{}".format(
+            print("{}Written Configuration at {}{}".format(
             Style.BRIGHT, self.config_path, Style.RESET_ALL))
         return True

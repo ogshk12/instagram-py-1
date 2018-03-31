@@ -15,7 +15,7 @@ import hashlib
 import requests
 
 
-class InstagramPyInstance:
+class InstagramPyInstance():
     cli = None
     guid = str(uuid.uuid4())
     phone_id = guid

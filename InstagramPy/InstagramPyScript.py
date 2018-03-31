@@ -12,20 +12,23 @@ from datetime import datetime
 from .AppInfo import appInfo as AppInformation
 
 
-class InstagramPyScript:
+class InstagramPyScript():
     script_code = None
-    cli = InstagramPyCLI(
-        appinfo=AppInformation,
-        started=datetime.now(),
-        verbose_level=0,
-        username=''
-    )
+    pService = None
+    cli = None
     threads = {}  # not actually threads but a simple dict
     no_of_threads = len(threads)
 
-    def __init__(self, script):
+    def __init__(self, script , PortableService = None):
+        self.cli = InstagramPyCLI(appinfo=AppInformation,
+                                  started=datetime.now(),
+                                  verbose_level=0,
+                                  username='',
+                                  PortableService=PortableService
+                                 )
         self.cli.PrintHeader()
         self.cli.PrintDatetime()
+        self.pService = PortableService
 
         if not os.path.isfile(script):
             self.cli.ReportError("no script found at {}".script)
@@ -43,20 +46,27 @@ class InstagramPyScript:
                         appinfo=AppInformation,
                         started=datetime.now(),
                         verbose_level=i['verbose'],
-                        username=i['id']
+                        username=i['id'],
+                        PortableService=self.pService
                     )
                 except:
                     cli = InstagramPyCLI(
                         appinfo=AppInformation,
                         started=datetime.now(),
                         verbose_level=0,
-                        username=i['id']
+                        username=i['id'],
+                        PortableService=self.pService
                     )
+
+                INSTAPY_CONFIG = DEFAULT_PATH
+                if self.pService is not None:
+                    INSTAPY_CONFIG = self.pService.getInstagramPyConfigPath();
+
                 try:
                     session = InstagramPySession(
                         i['id'],
                         i['password_list'],
-                        DEFAULT_PATH,
+                        INSTAPY_CONFIG,
                         DEFAULT_PATH,
                         cli
                     )
@@ -65,7 +75,7 @@ class InstagramPyScript:
                         session = InstagramPySession(
                             i['id'],
                             global_password_list,
-                            DEFAULT_PATH,
+                            INSTAPY_CONFIG,
                             DEFAULT_PATH,
                             cli
                         )

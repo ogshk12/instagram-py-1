@@ -1,5 +1,5 @@
 #
-# The BSD-3 Clause Licence.
+# The MIT Licence.
 # Copyright (C) 2018 Antony Jr.
 #
 # This shell script builds a AppImage for the
