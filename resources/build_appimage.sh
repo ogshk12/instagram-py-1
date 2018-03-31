@@ -31,7 +31,7 @@ pip install stem
 pip install instagram-py # always install from official repo.
 
 # Only copy our newly created environment to our appdir.
-cp -p -r conda/envs/instagram-py/* instagram-py.AppDir/usr/
+cp -p -r conda/envs/instagram-py instagram-py.AppDir/usr
 
 # Creating the AppImage.
 cp ../resources/instagram-py.desktop instagram-py.AppDir/ # Desktop file

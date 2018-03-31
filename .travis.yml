@@ -10,7 +10,7 @@ install:
 
 script:
   - export VERSION=$(git rev-parse --short HEAD)
-  - sudo bash resources/build_appimage.sh
+  - bash resources/build_appimage.sh
   - cd dist
 
 after_success:
