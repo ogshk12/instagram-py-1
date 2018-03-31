@@ -1,5 +1,5 @@
 # The MIT License.
-# Copyright (C) 2017 The Future Shell , Antony Jr.
+# Copyright (C) 2018 The Future Shell , Antony Jr.
 #
 # @filename    : InstagramPySession.py
 # @description : creates a new session , checks for configuration and gets critical data

@@ -1,5 +1,5 @@
 # The MIT License.
-# Copyright (C) 2017 The Future Shell , Antony Jr.
+# Copyright (C) 2018 The Future Shell , Antony Jr.
 #
 # @filename    : InstagramPyCLI.py
 # @description : Simple command line interface to display progress

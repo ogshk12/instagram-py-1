@@ -2,6 +2,16 @@
 
 Holds the History of releases and changes made for the software.
 
+### version 2.0.5
+
+    * **New Feature:** Instagram-Py Portable
+    * **Patched:** Instagram-Py Configuration Creator for the New feature.
+    * **Patched:** Instagram-Py CLI for the new feature.
+    * Changed code style to pep8.
+    * Fixed some bugs.
+    * Integrating Instagram-Py with continous Integration.
+    * Changed minor typo's
+
 ### version 2.0.2
 
     * Changed Copyright to the real author.
