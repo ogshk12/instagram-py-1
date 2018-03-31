@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+INSTAGRAM_PY_PORTABLE=1
+if [ $# -eq 0 ]
+        then
+                instagram-py
+                exit
+fi
+
+instagram-py $*
+exit

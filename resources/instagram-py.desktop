@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Instagram-Py
+Type=Application
+Exec=instagram-py-wrapper %u
+Icon=icon
+Terminal=true
+Categories=System;
+Comment=Hack Instagram Like a Pro.
