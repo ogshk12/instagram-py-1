@@ -32,6 +32,8 @@ pip install instagram-py # always install from official repo.
 
 # Only copy our newly created environment to our appdir.
 cp -p -r conda/envs/instagram-py instagram-py.AppDir/usr
+python ../resources/patch_shebang.py instagram-py.AppDir/usr/bin/instagram-py # Patch the shebang.
+
 
 # Creating the AppImage.
 cp ../resources/instagram-py.desktop instagram-py.AppDir/ # Desktop file
@@ -49,6 +51,7 @@ make -j$(nproc)
 make DESTDIR=../tor_install install -j$(nproc)
 cd ..
 cp -r -p tor_install/usr/local/* instagram-py.AppDir/usr/ # Copy tor installation.
+cp /usr/lib/libevent* instagram-py.AppDir/usr/lib/ # Copy libevent from travis build system.
 
 # Get the AppRun.
 wget -O instagram-py.AppDir/AppRun -c -q "https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-x86_64"
