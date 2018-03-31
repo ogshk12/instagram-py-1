@@ -56,7 +56,7 @@
  <tr>
  <td>
  <a href="https://github.com/antony-jr/instagram-py/releases/download/continuous/Instagram-Py-continuous-x86_64.AppImage">
- <img src="https://img.shields.io/badge/DOWNLOAD-InSTAGRAM--PY%20PORTABLE%20x86__64-brightgreen.svg?style=for-the-badge" />
+ <img src="https://img.shields.io/badge/LINUX_DOWNLOAD-InSTAGRAM--PY%20PORTABLE%20x86__64-brightgreen.svg?style=for-the-badge" />
  </a>
  </td>
  <td>
