@@ -255,7 +255,10 @@ DisableDebuggerAttachment 0
 
     def isTorServerRunning(self):
          ret = True
-         if self.torprocess.poll() == 0:
+         if self.__is_portable_env_set__():
+            if self.torprocess.poll() == 0:
+                 ret = False
+         else:
              ret = False
          return ret
 

@@ -60,7 +60,8 @@ class InstagramPyScript():
 
                 INSTAPY_CONFIG = DEFAULT_PATH
                 if self.pService is not None:
-                    INSTAPY_CONFIG = self.pService.getInstagramPyConfigPath();
+                    if self.pService.isSetInstagramPyPortable():
+                        INSTAPY_CONFIG = self.pService.getInstagramPyConfigPath();
 
                 try:
                     session = InstagramPySession(

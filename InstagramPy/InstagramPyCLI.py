@@ -44,7 +44,8 @@ class InstagramPyCLI():
 
     def ReportError(self, error):
         if self.pService is not None:
-            self.pService.terminate()
+            if self.pService.isSetInstagramPyPortable():
+                self.pService.terminate()
         print('{}{}fatal error::{} {}'.format(
             Style.BRIGHT, Fore.RED, Style.RESET_ALL, error))
         sys.exit(-1)

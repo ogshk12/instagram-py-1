@@ -96,17 +96,19 @@ def ExecuteInstagramPy():
 
         PortableService = InstagramPyPortable() # Pauses for 5 Seconds atleast if Portable is set.
         if PortableService is not None:
-            if PortableService.isTorServerRunning() is False:
-                print("{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED,Style.RESET_ALL))
+            if PortableService.isSetInstagramPyPortable():
+                if PortableService.isTorServerRunning() is False:
+                    print("{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED,Style.RESET_ALL))
 
         InstagramPyScript(Parsed.script , PortableService=PortableService).run()
     elif Parsed.username is not None and Parsed.password_list is not None:
 
         PortableService = InstagramPyPortable()
         if PortableService is not None:
-            if PortableService.isTorServerRunning() is False:
-                print("{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED,Style.RESET_ALL))
-                sys.exit(-1)
+            if PortableService.isSetInstagramPyPortable():
+                if PortableService.isTorServerRunning() is False:
+                    print("{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED,Style.RESET_ALL))
+                    sys.exit(-1)
 
         cli = InstagramPyCLI(appinfo=AppInformation,
                              started=datetime.now(),
@@ -114,12 +116,14 @@ def ExecuteInstagramPy():
         cli.PrintHeader()
         cli.PrintDatetime()
         session = None
+        
+        INSTAPY_CONFIG = DEFAULT_PATH
         if PortableService is not None:
-            session = InstagramPySession(
-                Parsed.username, Parsed.password_list, PortableService.getInstagramPyConfigPath() , DEFAULT_PATH, cli)
-        else:
-            session = InstagramPySession(
-                   Parsed.username, Parsed.password_list, DEFAULT_PATH , DEFAULT_PATH, cli)
+            if PortableService.isSetInstagramPyPortable():
+                INSTAPY_CONFIG = PortableService.getInstagramPyConfigPath()
+            
+        session = InstagramPySession(
+                   Parsed.username, Parsed.password_list, INSTAPY_CONFIG , DEFAULT_PATH, cli)
         session.ReadSaveFile(Parsed.countinue)
         instagrampy = InstagramPyInstance(cli, session)
         while not instagrampy.PasswordFound():
@@ -136,8 +140,9 @@ def ExecuteInstagramPy():
 
     # Make sure to close the tor server.
     if PortableService is not None:
-        if PortableService.isTorServerRunning():
-            PortableService.terminate()
+        if PortableService.isSetInstagramPyPortable():
+            if PortableService.isTorServerRunning():
+                PortableService.terminate()
     print('\n{}Report bug, suggestions and new features at {}{}https://github.com/antony-jr/instagram-py{}'
           .format(Fore.GREEN,
                   Style.RESET_ALL,
