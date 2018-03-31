@@ -1,4 +1,4 @@
-#
+#!/usr/bin/bash
 # The MIT Licence.
 # Copyright (C) 2018 Antony Jr.
 #
