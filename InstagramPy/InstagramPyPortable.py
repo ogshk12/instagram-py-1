@@ -18,14 +18,14 @@ class InstagramPyPortable():
     torprocess = None  # This is tor server process.
 
     def __init__(self):
-        if self.__is_portable_env_set__() is False:
+        if self.isSetInstagramPyPortable() is False:
             return None  # Quit as this is not a portable instance.
         # ----
 
         # Make Configurations.
 
-        self.torserver_port = self.__find_free_port__()
-        self.torserver_control_port = self.__find_free_port__()
+        self.torserver_port = self.findFreePort()
+        self.torserver_control_port = self.findFreePort()
         self.instagram_py_config_fp = tempfile.NamedTemporaryFile(
             mode='w', delete=False)
         self.torrc_fp = tempfile.NamedTemporaryFile(mode='w', delete=False)
@@ -240,27 +240,24 @@ DisableDebuggerAttachment 0
         # Lets give tor server little time to startup and bootstrap a circuit.
         time.sleep(5)
 
-    def __find_free_port__(self):
+    def findFreePort(self):
         with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
             s.bind(('', 0))
             return s.getsockname()[1]
         return 0
 
-    def __is_portable_env_set__(self):
+    def isSetInstagramPyPortable(self):
         ret = True
         if os.environ.get('INSTAGRAM_PY_PORTABLE') is None:
             ret = False
         return ret
-
-    def isSetInstagramPyPortable(self):
-        return self.__is_portable_env_set__()
 
     def getInstagramPyConfigPath(self):
         return self.instagram_py_config_fp.name
 
     def isTorServerRunning(self):
         ret = True
-        if self.__is_portable_env_set__():
+        if self.isSetInstagramPyPortable():
             if self.torprocess.poll() == 0:
                 ret = False
         else:
@@ -269,9 +266,6 @@ DisableDebuggerAttachment 0
 
     def terminate(self):
         # Delete All Configuration files.
-        try:
-            os.unlink(self.instagram_py_config_fp.name)
-            os.unlink(self.torrc_fp.name)
-        except:
-            pass
+        os.unlink(self.instagram_py_config_fp.name)
+        os.unlink(self.torrc_fp.name)
         return self.torprocess.terminate()
