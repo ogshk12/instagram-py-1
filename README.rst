@@ -1,4 +1,4 @@
-.. image:: .img/poster.png
+.. image:: https://raw.githubusercontent.com/antony-jr/instagram-py/master/.img/poster.png
 
 
 
@@ -44,7 +44,7 @@
 
  <br>
  <p align=center>
- <img src=".img/preview.gif" / >
+ <img src="https://raw.githubusercontent.com/antony-jr/instagram-py/master/.img/preview.gif" / >
  </p>
 
 
