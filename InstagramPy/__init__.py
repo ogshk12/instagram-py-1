@@ -13,6 +13,7 @@ from .InstagramPyInstance import InstagramPyInstance
 from .InstagramPyDumper import InstagramPyDumper
 from .InstagramPyScript import InstagramPyScript
 from .InstagramPyConfigurationCreator import InstagramPyConfigurationCreator
+from .InstagramPyPortable import InstagramPyPortable
 from datetime import datetime
 from .AppInfo import appInfo as AppInformation
 from .colors import *
@@ -78,6 +79,7 @@ cli_parser.add_argument('--verbose',  # check if the user wants verbose mode ena
 
 def ExecuteInstagramPy():
     Parsed = cli_parser.parse_args()
+    PortableService = None  # Later will be filled if portable is set.
 
     if Parsed.create_configuration is not None:
         if Parsed.default_configuration is not None:
@@ -91,16 +93,40 @@ def ExecuteInstagramPy():
     elif Parsed.script is not None:
         if not os.path.isfile(Parsed.script):
             print("No Attack Script found at {}".format(Parsed.script))
-            sys.exit(-1)
-        InstagramPyScript(Parsed.script).run()
-    elif Parsed.username is not None and Parsed.password_list is not None:
-        cli = InstagramPyCLI(appinfo=AppInformation,
-                             started=datetime.now(), verbose_level=Parsed.verbose, username=Parsed.username)
 
+        # Pauses for 5 Seconds atleast if Portable is set.
+        PortableService = InstagramPyPortable()
+        if PortableService is not None:
+            if PortableService.isSetInstagramPyPortable():
+                if PortableService.isTorServerRunning() is False:
+                    print(
+                        "{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED, Style.RESET_ALL))
+
+        InstagramPyScript(Parsed.script, PortableService=PortableService).run()
+    elif Parsed.username is not None and Parsed.password_list is not None:
+
+        PortableService = InstagramPyPortable()
+        if PortableService is not None:
+            if PortableService.isSetInstagramPyPortable():
+                if PortableService.isTorServerRunning() is False:
+                    print(
+                        "{}fatal error{}:: Failed to Start the In-Built Tor Server.".format(Fore.RED, Style.RESET_ALL))
+                    sys.exit(-1)
+
+        cli = InstagramPyCLI(appinfo=AppInformation,
+                             started=datetime.now(),
+                             verbose_level=Parsed.verbose, username=Parsed.username, PortableService=PortableService)
         cli.PrintHeader()
         cli.PrintDatetime()
+        session = None
+
+        INSTAPY_CONFIG = DEFAULT_PATH
+        if PortableService is not None:
+            if PortableService.isSetInstagramPyPortable():
+                INSTAPY_CONFIG = PortableService.getInstagramPyConfigPath()
+
         session = InstagramPySession(
-            Parsed.username, Parsed.password_list, DEFAULT_PATH, DEFAULT_PATH, cli)
+            Parsed.username, Parsed.password_list, INSTAPY_CONFIG, DEFAULT_PATH, cli)
         session.ReadSaveFile(Parsed.countinue)
         instagrampy = InstagramPyInstance(cli, session)
         while not instagrampy.PasswordFound():
@@ -114,6 +140,12 @@ def ExecuteInstagramPy():
         )
     else:
         cli_parser.print_help()
+
+    # Make sure to close the tor server.
+    if PortableService is not None:
+        if PortableService.isSetInstagramPyPortable():
+            if PortableService.isTorServerRunning():
+                PortableService.terminate()
     print('\n{}Report bug, suggestions and new features at {}{}https://github.com/antony-jr/instagram-py{}'
           .format(Fore.GREEN,
                   Style.RESET_ALL,

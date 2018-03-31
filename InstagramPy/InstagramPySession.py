@@ -1,5 +1,5 @@
 # The MIT License.
-# Copyright (C) 2017 The Future Shell , Antony Jr.
+# Copyright (C) 2018 The Future Shell , Antony Jr.
 #
 # @filename    : InstagramPySession.py
 # @description : creates a new session , checks for configuration and gets critical data
@@ -15,7 +15,7 @@ from stem.control import Controller
 DEFAULT_PATH = "{}/".format(os.path.expanduser('~'))
 
 
-class InstagramPySession:
+class InstagramPySession():
     '''
         __init__:
             - loads configuration from specified file.
@@ -286,8 +286,8 @@ class InstagramPySession:
         if not self.tor_controller == None:
             # signal tor to change ip
             self.tor_controller.signal(Signal.NEWNYM)
-            self.ip =  (self.bot.get(
-                    'http://httpbin.org/ip').json())['origin']
+            self.ip = (self.bot.get(
+                'http://httpbin.org/ip').json())['origin']
             return True
         return False
 

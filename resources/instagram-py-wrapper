@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+if [ $# -eq 0 ]
+        then
+                instagram-py
+                exit
+fi
+
+INSTAGRAM_PY_PORTABLE=1 instagram-py $*
+exit

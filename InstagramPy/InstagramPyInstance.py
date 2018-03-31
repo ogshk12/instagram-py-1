@@ -1,5 +1,5 @@
 # The MIT License.
-# Copyright (C) 2017 The Future Shell , Antony Jr.
+# Copyright (C) 2018 The Future Shell , Antony Jr.
 #
 # @filename    : InstagramPyInstance.py
 # @description : creates a new app instance and coordinates with
@@ -15,7 +15,7 @@ import hashlib
 import requests
 
 
-class InstagramPyInstance:
+class InstagramPyInstance():
     cli = None
     guid = str(uuid.uuid4())
     phone_id = guid
