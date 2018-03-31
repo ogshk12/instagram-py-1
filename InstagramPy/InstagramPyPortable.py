@@ -17,6 +17,25 @@ from .InstagramPyConfigurationCreator import InstagramPyConfigurationCreator
 class InstagramPyPortable():
     torprocess = None  # This is tor server process.
 
+    #
+    # Static Methods.
+    #
+    @staticmethod
+    def findFreePort():
+        with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
+            s.bind(('', 0))
+            return s.getsockname()[1]
+        return 0
+
+    @staticmethod
+    def isSetInstagramPyPortable():
+        ret = True
+        if os.environ.get('INSTAGRAM_PY_PORTABLE') is None:
+            ret = False
+        return ret
+
+    # ------
+
     def __init__(self):
         if self.isSetInstagramPyPortable() is False:
             return None  # Quit as this is not a portable instance.
@@ -239,18 +258,6 @@ DisableDebuggerAttachment 0
             ['tor', '-f', self.torrc_fp.name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         # Lets give tor server little time to startup and bootstrap a circuit.
         time.sleep(5)
-
-    def findFreePort(self):
-        with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
-            s.bind(('', 0))
-            return s.getsockname()[1]
-        return 0
-
-    def isSetInstagramPyPortable(self):
-        ret = True
-        if os.environ.get('INSTAGRAM_PY_PORTABLE') is None:
-            ret = False
-        return ret
 
     def getInstagramPyConfigPath(self):
         return self.instagram_py_config_fp.name

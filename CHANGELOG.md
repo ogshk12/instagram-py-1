@@ -2,7 +2,7 @@
 
 Holds the History of releases and changes made for the software.
 
-### version 2.0.5
+### version 2.0.6
 
     * **New Feature:** Instagram-Py Portable
     * **Patched:** Instagram-Py Configuration Creator for the New feature.
