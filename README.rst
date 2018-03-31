@@ -8,8 +8,12 @@
     
  
  <h1 align="center" > Instagram-Py </h1>
- 
+
  <p align=center>
+ <a href="https://travis-ci.org/antony-jr/instagram-py">
+ <img src="https://travis-ci.org/antony-jr/instagram-py.svg?branch=master" / >
+ </a>
+
  <a href="https://github.com/antony-jr/instagram-py/issues">
  <img src="https://img.shields.io/github/issues/antony-jr/instagram-py.svg?style=flat-square" / >
  </a>
@@ -44,6 +48,26 @@
 
  <br>
  <p align=center>
+ <table>
+ <tr>
+ <th>Download</th>
+ <th>Install</th>
+ </tr>
+ <tr>
+ <td>
+ <a href="https://github.com/antony-jr/instagram-py/releases/download/continuous/Instagram-Py-continuous-x86_64.AppImage">
+ <img src="https://img.shields.io/badge/DOWNLOAD-InSTAGRAM--PY%20PORTABLE%20x86__64-brightgreen.svg?style=for-the-badge" />
+ </a>
+ </td>
+ <td>
+ <pre>
+ $ chmod +x Instagram-Py-continous-x86_64.AppImage;
+ $ ./Instagram-Py-continous-x86_64.AppImage # Just Use!
+ </pre>
+ </td>
+ </tr>
+ </table>
+ <br>
  <img src="https://raw.githubusercontent.com/antony-jr/instagram-py/master/.img/preview.gif" / >
  </p>
 
@@ -73,6 +97,15 @@
  Features
 ------------
 
+* Ultra Portable
+
+  As of Instagram-Py v2.0.6 , Instagram-Py is also distributed in **AppImages** , If you use
+  Instagram-Py bundled in a AppImage , **You do not need to install anything , even tor.**
+  Just **download** , **mark it executable** and **enjoy**! 
+  Now Instagram-Py is the only (*The best of my knowledge*) hacking tool which is ultra portable that you
+  can carry in a thumb drive. ( And use it in **any Linux Distro without installing anything**).
+  know more in the installation section.
+
 * Instagram-Py Scripting
 
   Craft your own python script which will embed into Instagram-Py for Maximum Customization of your
@@ -85,11 +118,39 @@
 * Elegant Tor Identity Change with Stem ( Tor's Official Library for Python )
 
 
-**Depends on**: python3 , tor ,  requests , requests[socks] , stem
+**Depends on**: python3 , tor ,  requests , requests[socks] , stem (*Don't need anything if you use Instagram-Py Portable*)
 
 ==============
  Installation
 ==============
+
+------------------------------------------------------------
+Get Instagram-Py with Zero Setup ( Instagram-Py Portable )
+------------------------------------------------------------
+
+
+Just **execute** this **single command** and you will have everything to start using
+**Instagram-Py** right-away!
+**This Method is only possible for Linux Distro's with 64Bit Architecture** (*Any Linux Distro which is 64 Bit*).
+**If you use this method...**
+
+* You **don't** need to install anything in your **linux distro**.
+* You **don't** even need **python** and **tor server** installed.
+* You **don't** need any type of **configuration**. (*It Just Works!*)
+
+ ::
+
+  $ sudo wget -O /usr/bin/instagram-py https://git.io/vxKaq; sudo chmod +x /usr/bin/instagram-py
+  $ instagram-py # Installed , Easy right ?
+
+
+**Caution**: Please don't mix up this installation and pip installation as it may give unexpected
+output.
+
+You can also download **instagram-py** directly from the release page and save it in a thumb drive
+to use it later, Cool right ?
+
+
 ---------------------------------
  Upgrading Instagram-Py with pip
 ---------------------------------
