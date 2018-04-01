@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source activate base
 if [ $# -eq 0 ]
         then
                 instagram-py
