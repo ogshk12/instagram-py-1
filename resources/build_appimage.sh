@@ -21,18 +21,17 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 # Conda installation ( Kind of ? )
 PATH=$(pwd)/conda/bin:$PATH # set path with prefix.
 
-# Dont create any environment as we are only going to use a single instance.
-source activate base
+# create a new environment.
+conda create -n instagram-py python=3.6 -y # we need python 3.6 >= for instagram-py.
+
+# Install instagram-py into the new environment
+source activate instagram-py
 pip install requests[socks]
 pip install stem
 pip install instagram-py # always install from official repo.
-source deactivate
 
-# Clear unwanted packages.
-conda clean --all -y
-
-# Only copy our newly created instance to our appdir.
-cp -p -r conda instagram-py.AppDir/usr
+# Only copy our newly created environment to our appdir.
+cp -p -r conda/envs/instagram-py instagram-py.AppDir/usr
 python ../resources/patch_shebang.py instagram-py.AppDir/usr/bin/instagram-py # Patch the shebang.
 
 
