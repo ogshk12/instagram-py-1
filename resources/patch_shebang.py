@@ -16,7 +16,7 @@ lineOne = True
 for i in in_fp:
     if lineOne:
         lineOne = False
-        Buffer.append("#!/usr/bin/python\n")
+        Buffer.append("#!/usr/bin/env python\n")
     else:
         Buffer.append(i)
 print("[*] Buffer input file... ")
