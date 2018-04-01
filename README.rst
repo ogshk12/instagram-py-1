@@ -267,7 +267,7 @@ open your **tor configuration** file usually located at **/etc/tor/torrc**
                          ease.
    --default-configuration, -dc
                          noconfirm for Instagram-Py Configuration Creator!
-   --countinue, -c       Countinue the previous attack if found.
+   --continue-attack, -c       Continue the previous attack if found.
    --verbose, -v         Activate Verbose mode. ( Verbose level )
 
  example: instagram-py -c -vvv -u instatestgod__ -pl rockyou.txt
@@ -307,7 +307,7 @@ This Scripts are simple Python Scripts ( You Can just do anything that is possib
    {
    "id" : "instatestgod__",
    "password_list" : "/home/antonyjr/Developer/.exploits/rockyou.txt" , # full path
-   "countinue" : True, # Optional
+   "continue" : True, # Optional
    "verbose" : 0 # Optional
     },
    # If you want to simultaniously attack the same account with different wordlist
@@ -316,7 +316,7 @@ This Scripts are simple Python Scripts ( You Can just do anything that is possib
    {
    "id" : "instatestgod__",
    # global password list will cover us if password list is not mentioned!
-   "countinue" : False, # Optional
+   "continue" : False, # Optional
    "verbose" : 3 # Optional
    }
    # ,

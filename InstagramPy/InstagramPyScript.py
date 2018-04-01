@@ -84,7 +84,7 @@ class InstagramPyScript():
                         self.cli.ReportError(
                             "invalid script :: No Password list is Mentioned in the Script!")
                 try:
-                    session.ReadSaveFile(i['countinue'])
+                    session.ReadSaveFile(i['continue'])
                 except:
                     session.ReadSaveFile(False)
 

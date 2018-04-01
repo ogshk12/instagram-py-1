@@ -2,6 +2,11 @@
 
 Holds the History of releases and changes made for the software.
 
+### version 2.0.7
+
+    * Fixes the invalid continue evaluation
+    * Changed minor typo's ( like spelling mistakes )
+
 ### version 2.0.6
 
     * **New Feature:** Instagram-Py Portable

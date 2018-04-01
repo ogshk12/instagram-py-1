@@ -65,7 +65,7 @@ cli_parser.add_argument('--default-configuration',
                         help='noconfirm for Instagram-Py Configuration Creator!'
                         )
 
-cli_parser.add_argument('--countinue',
+cli_parser.add_argument('--continue-attack',
                         '-c',
                         action='count',
                         help='Countinue the previous attack if found.'
@@ -127,7 +127,7 @@ def ExecuteInstagramPy():
 
         session = InstagramPySession(
             Parsed.username, Parsed.password_list, INSTAPY_CONFIG, DEFAULT_PATH, cli)
-        session.ReadSaveFile(Parsed.countinue)
+        session.ReadSaveFile(Parsed.continue_attack)
         instagrampy = InstagramPyInstance(cli, session)
         while not instagrampy.PasswordFound():
             instagrampy.TryPassword()
