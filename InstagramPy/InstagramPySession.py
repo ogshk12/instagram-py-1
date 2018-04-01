@@ -63,8 +63,12 @@ class InstagramPySession():
         self.password_list_md5_sum = str(
             self.md5sum(open(password_list, "rb")).hexdigest())
 
+        lineOne = True
         with open(password_list, encoding='utf-8', errors='ignore') as f:
             for line in f:
+                if lineOne:
+                    self.password = str(line).rstrip()
+                    lineOne = False
                 self.password_list_length += 1
 
         if configuration == DEFAULT_PATH:
@@ -163,12 +167,12 @@ class InstagramPySession():
         if self.current_save == None:
             self.CreateSaveFile(isResume)
         SaveFile = json.load(open(self.current_save, 'r'))
-        self.current_line = SaveFile['line-count']
         if self.password_list_md5_sum == SaveFile['password-file-md5'] and self.username == SaveFile['username']:
             c_line = 1
+            end = SaveFile['line-count']
             for line in self.password_list_buffer:
-                self.password = str(line).rstrip()
-                if c_line == self.current_line:
+                if c_line == end:
+                    self.password = str(line).rstrip()
                     break
                 c_line += 1
         return True
