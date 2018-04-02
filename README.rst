@@ -61,8 +61,8 @@
  </td>
  <td>
  <pre>
- $ chmod +x Instagram-Py-continous-x86_64.AppImage;
- $ ./Instagram-Py-continous-x86_64.AppImage # Just Use!
+ $ chmod +x Instagram-Py-continuous-x86_64.AppImage;
+ $ ./Instagram-Py-continuous-x86_64.AppImage # Just Use!
  </pre>
  </td>
  </tr>
