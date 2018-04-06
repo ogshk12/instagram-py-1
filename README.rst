@@ -44,6 +44,16 @@
 | **this is the official repo**. You can also use **different versions** of **instagram-py** through **pip**. 
 
 
+| **Important Note**: You need to understand that **brute force** attacks are not always successful ( or mostly unsuccessful )
+| if you use a generic wordlist that is not related to the target your attack will be useful , Make sure you use your tries
+| carefully. **Please see that I am not a paid hacker and doing so is also illegal** and so please don't contact in the hope to
+| get some help. Since I can't help you because I am not that really **skilled** in this stuff myself. 
+
+
+| **Disclaimer**: This tool was created only for a small experiment and to study how brute force attacks work. You are free to
+| use this tool with respect to the **MIT License** and as the license states the author has nothing to do with the any
+| damage caused by this tool , The users are the only one who is responsible ( But I hope you won't do anything serious ).
+
 .. raw:: html
 
  <br>
