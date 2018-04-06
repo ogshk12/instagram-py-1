@@ -46,7 +46,7 @@
 
 |
 | **Important Note**: You need to understand that **brute force** attacks are not always successful ( or mostly unsuccessful )
-| if you use a generic wordlist that is not related to the target your attack will be useful , Make sure you use your tries
+| if you use a generic wordlist that is not related to the target and so the attack will be useless,Make sure you use your tries
 | carefully. **Please see that I am not a paid hacker and doing so is also illegal** and so please don't contact in the hope to
 | get some help. Since I can't help you because I am not that really **skilled** in this stuff myself. 
 
