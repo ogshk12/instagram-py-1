@@ -53,7 +53,7 @@
 
 |
 | **Disclaimer**: This tool was created only for a small experiment and to study how brute force attacks work. You are free to
-| use this tool with respect to the **MIT License** and as the license states the author has nothing to do with the any
+| use this tool with respect to the **MIT License** , and as the license states, the author has nothing to do with the any
 | damage caused by this tool , The users are the only one who is responsible ( But I hope you won't do anything serious ).
 
 .. raw:: html
