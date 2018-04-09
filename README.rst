@@ -42,6 +42,7 @@
 | this job , Yep! even now if you search through github you cannot find a tool which is good as instagram-py. Since a few people
 | liked this tool , I decided to give it a **LTS**. Still there exists some old versions of instagram-py all-over github but
 | **this is the official repo**. You can also use **different versions** of **instagram-py** through **pip**. 
+|
 
 
 | **Why is this slow ?**: I know instagram-py can be really slow , Some similar projects like 
@@ -51,6 +52,7 @@
 | the attack will skip the real password( **most of the time** )( The explanation is big , open issue to know more ).
 | Instagram-Py is carefully designed to brute-force instagram so the slowness is on purpose , instagram-py will have
 | multi-threading soon!
+
 
 
 |
