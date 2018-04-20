@@ -1,3 +1,9 @@
+-----------------------------------------------------------------------------------------------------------------------------
+Instagram-Py support is dropped , I just don't want to abuse the tor project anymore and tools that hack any social media is bad. Also , I don't want to spend my time on something which will hurt others.( victims ). Sorry everyone! 😭😭😭
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
 .. image:: https://raw.githubusercontent.com/antony-jr/instagram-py/master/.img/poster.png
 
 
